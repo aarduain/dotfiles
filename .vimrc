@@ -33,9 +33,9 @@ set visualbell
 " set cursorline
 set ttyfast
 set backspace=indent,eol,start
+set laststatus=2
 set relativenumber
 set undofile
-set undodir="~/undo_files"
 "set leader key
 let mapleader = ","
 "set the runtime path to include Vundle and initialize
@@ -59,10 +59,6 @@ nnoremap <C-l> <C-w>l
 nnoremap <tab> %
 vnoremap <tab> %
 nnoremap ; :
-nnoremap <leader>] :tabn<cr>
-nnoremap <leader>[ :tabp<cr>
-nnoremap <leader>p :tabe 
-nnoremap <leader>/ :ls<cr>:pwd<cr>
 "end leader keys 
 set nowrap
 set textwidth=79
@@ -88,10 +84,8 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_auto_jump = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_enable_balloons = 1
-let g:syntastic_enable_highlighting = 1
+let g:syntastic_php_phpcs_args="--standard=PSR2"
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 call vundle#begin()
@@ -125,11 +119,8 @@ Plugin 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx']  }" 
 Plugin 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " JSX Support for React
 Plugin 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx'] } "JSDoc suto-snippets
 Plugin 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javascript.jsx'] } " Extras for javascript Libraries
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'Syntastic'
-Plugin 'scrooloose/NERDTree'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
