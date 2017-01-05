@@ -2,7 +2,7 @@ export SERVER='aarduain.com'
 export SERVERDIR='/web/aarduain.com'
 export SANDBOX=$SERVERDIR
 export DBSERVER='localhost'
-export EDITOR='mvim'
+export EDITOR='vim'
 alias SB='. ~/.bashrc'
 alias la='ls -altr'
 alias pj='phantomjs --webdriver=4444'

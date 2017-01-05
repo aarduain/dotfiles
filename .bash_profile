@@ -12,6 +12,8 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 alias aa01='cd /web/aarduain.com/git/ets/www/' # ETS
 alias etstests='cd /web/aarduain.com/git/ets/www/tests/codeception/projects/ets/tests' # ETS Testing
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias mysql='mycli'
 set -o vi
 
 # MacPorts Installer addition on 2015-05-04_at_15:34:11: adding an appropriate PATH variable for use with MacPorts.
@@ -63,7 +65,13 @@ function startPhantomJs() {
 	fi
 }
 
-
+function mysqlConn()  {
+	if [ -z "$1" ]; then
+		echo "Provide a group suffix to connect! (live, stage, sb, local)"
+	else
+		mysql --defaults-group-suffix=$1
+	fi
+}
 
 function tomcatControl() {
 	local tomcatVer="7.0.54"

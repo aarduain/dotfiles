@@ -35,7 +35,7 @@ set ttyfast
 set backspace=indent,eol,start
 set relativenumber
 set undofile
-set undodir="~/undo_files"
+set undodir=~/undo_files/
 "set leader key
 let mapleader = ","
 "set the runtime path to include Vundle and initialize
@@ -94,6 +94,9 @@ let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
+" VDebug Config
+let g:vdebug_features = { 'max_children': 500 }
+
 call vundle#begin()
 Bundle 'gmarik/vundle'
 "alternatively, pass a path where Vundle should install plugins
@@ -134,8 +137,12 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax enable
+colorscheme monokai
 " To ignore plugin indent changes, instead use:
 filetype plugin on
+autocmd VimEnter * NERDTree
+autocmd BufWinEnter  * NERDTreeMirror
+autocmd VimEnter * wincmd p
 "
 " Brief help
 " :PluginInstall    - installs plugins; append `!` to update or just
