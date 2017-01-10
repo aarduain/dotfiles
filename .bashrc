@@ -2,17 +2,17 @@ export SERVER='aarduain.com'
 export SERVERDIR='/web/aarduain.com'
 export SANDBOX=$SERVERDIR
 export DBSERVER='localhost'
-export EDITOR='vim'
+export EDITOR='vi'
 alias SB='. ~/.bashrc'
-alias la='ls -altr'
+alias lt='ls -altr'
 alias pj='phantomjs --webdriver=4444'
 alias selenium='java -jar ~/Desktop/Work\ Setup/selenium-server-standalone-2.45.0.jar'
+alias buildTests='codecept build -c ~/workingcopy/../tests/codeception/projects/ets'
+alias runAccept='codecept run -c ~/workingcopy/../tests/codeception/projects/ets acceptance'
+alias runFunc='codecept run -c ~/workingcopy/../tests/codeception/projects/ets functional'
+alias cd='cd -P'
+stty -ixon -ixoff
 
-function codecept_start() 
-{
-	cd ~/codecept
-	php codecept.phar run -c projects/ets $1\/$2\/$3 --debug --steps
-}
 
 function workon() {
 if test ! -d "$SANDBOX/public.$1"

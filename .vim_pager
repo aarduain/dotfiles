@@ -2,7 +2,6 @@ set term=xterm-256color
 "solarized options 
 set mouse=a
 set number
-set autoindent
 set history=700
 "Turn on the WiLd menu
 set wildmenu
@@ -16,13 +15,10 @@ set noerrorbells
 set novisualbell
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set nomodifiable
+set readonly
 set clipboard=unnamed
-set ts=4
-set lcs=tab:>.,trail:-
 set list
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 "set expandtab
 set encoding=utf-8
 set scrolloff=3
@@ -44,9 +40,11 @@ set incsearch
 set ignorecase smartcase
 set gdefault
 "leader keys and remaps
+cnoreabbrev q q!
+map <leader>l 233zl
+map <leader>h 233zh
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
-nnoremap <leader>n :NERDTree<cr>
 nnoremap <leader>y :YRShow<cr>
 inoremap <leader>y <ESC>:YRShow<cr>
 inoremap jj <ESC>
@@ -89,8 +87,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
+autocmd VimLeave * :!open -a iTerm
 
 call vundle#begin()
 Bundle 'gmarik/vundle'
@@ -126,8 +124,6 @@ Plugin 'othree/javascript-libraries-syntax.vim', { 'for': ['javascript', 'javasc
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Syntastic'
-Plugin 'scrooloose/NERDTree'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

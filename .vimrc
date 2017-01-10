@@ -7,6 +7,8 @@ set history=700
 "Turn on the WiLd menu
 set wildmenu
 set wildmode=list:longest
+set laststatus=2
+set statusline+=%f
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 set ruler
@@ -23,6 +25,7 @@ set list
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set confirm
 "set expandtab
 set encoding=utf-8
 set scrolloff=3
@@ -63,6 +66,10 @@ nnoremap <leader>] :tabn<cr>
 nnoremap <leader>[ :tabp<cr>
 nnoremap <leader>p :tabe 
 nnoremap <leader>/ :ls<cr>:pwd<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>d :bd<cr>
+nnoremap <leader>. :buffer<Space>
 "end leader keys 
 set nowrap
 set textwidth=79
@@ -81,6 +88,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:ctrlp_working_path_mode = 'ra'
 " Syntastic config
 let g:syntastic_enable_signs = 1 " check if this slows things down
 let g:syntastic_check_on_open = 1
@@ -96,7 +104,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " VDebug Config
 let g:vdebug_features = { 'max_children': 500 }
-
+let g:airline#extensions#tabline#enabled = 1
 call vundle#begin()
 Bundle 'gmarik/vundle'
 "alternatively, pass a path where Vundle should install plugins
@@ -133,16 +141,17 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Syntastic'
 Plugin 'scrooloose/NERDTree'
 Plugin 'jistr/vim-nerdtree-tabs'
-
+Plugin 'vim-airline/vim-airline'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax enable
 colorscheme monokai
 " To ignore plugin indent changes, instead use:
 filetype plugin on
-autocmd VimEnter * NERDTree
-autocmd BufWinEnter  * NERDTreeMirror
+" autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 "
 " Brief help
 " :PluginInstall    - installs plugins; append `!` to update or just
