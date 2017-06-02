@@ -3,7 +3,7 @@ export SERVERDIR='/web/aarduain.com'
 export SANDBOX=$SERVERDIR
 export DBSERVER='localhost'
 export EDITOR='vi'
-alias SB='. ~/.bashrc'
+alias SB='. source ~/.zshrc'
 alias lt='ls -altr'
 alias pj='phantomjs --webdriver=4444'
 alias selenium='java -jar ~/Desktop/Work\ Setup/selenium-server-standalone-2.45.0.jar'
@@ -11,7 +11,6 @@ alias buildTests='codecept build -c ~/workingcopy/../tests/codeception/projects/
 alias runAccept='codecept run -c ~/workingcopy/../tests/codeception/projects/ets acceptance'
 alias runFunc='codecept run -c ~/workingcopy/../tests/codeception/projects/ets functional'
 alias cd='cd -P'
-stty -ixon -ixoff
 
 
 function workon() {
