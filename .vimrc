@@ -180,6 +180,7 @@ au BufNewFile,BufRead *.html set filetype=php
 au BufNewFile,BufRead *.phtml set filetype=php
 au BufNewFile,BufRead *.js set filetype=javascript
 au BufNewFile,BufRead *.jsx set filetype=javascript
+au BufNewFile,BufRead *.ts set filetype=javascript
 "Highlight JSX in non-JSX files
 let g:jsx_ext_required = 0
 " VDebug Config

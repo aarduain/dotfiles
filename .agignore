@@ -1,3 +1,5 @@
 # ets project stuff
 node_modules/*
 logs/*
+coverage/*
+js/*
