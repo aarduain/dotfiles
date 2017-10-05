@@ -35,7 +35,7 @@ export EDITOR='vim'
 alias SB='source ~/.zshrc'
 alias lt='ls -altr'
 alias pj='phantomjs --webdriver=4444 --ignore-ssl-errors=true --ssl-protocol=any'
-alias selenium='java -jar ~/Desktop/Work\ Setup/selenium-server-standalone-2.45.0.jar'
+alias selenium='java -jar /usr/local/lib/node_modules/selenium-server-standalone/index.jar'
 alias cd='cd -P'
 alias ag='ag --path-to-agignore ~/.agignore'
 set -o vi
@@ -49,6 +49,7 @@ export PATH="/Users/aarduain/bin/scripts:$PATH"
 export PATH="/Users/aarduain/bin:$PATH"
 export PATH="/Users/aarduain/.vimpkg/bin:$PATH"
 export PATH="/Users/aarduain/Jmeter/bin:$PATH"
+export PATH="/Users/aarduain/bin/chromedriver:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 #run bashrc on startup
@@ -61,8 +62,8 @@ keychain --nogui $HOME/.ssh/id_rsa
 
 function startSelenium() {
 	if [ -z $(pgrep -f selenium) ]; then
-		echo "Starting Selenium Standalone Server: "
-		nohup java -jar ~/Downloads/selenium-server-standalone-2.45.0.jar >> /var/log/selenium-server.log &
+		echo "Starting Selenium Standalone Server With ChromeDriver: "
+		nohup java -jar /usr/local/lib/node_modules/selenium-server-standalone/index.jar -Dwebdriver.chrome.driver=/Users/aarduain/bin/chromedriver >> /var/log/selenium-server.log &
 	else
 		echo "Selenium Standalone Server already running: "`pgrep -f selenium`
 	fi
@@ -71,7 +72,7 @@ function startSelenium() {
 function startPhantomJs() {
 	if [ -z $(pgrep phantom) ]; then
 		echo "Starting PhantomJS: "
-		nohup ~/bin/phantomjs --webdriver=4444 --ignore-ssl-errors>> /var/log/phantomjs.log &
+		nohup phantomjs --webdriver=4444 --ignore-ssl-errors --ssl-protocol=any  > /Users/aarduain/phantomjs.log &
 	else
 		echo "PhantomJS already running: "`pgrep phantomjs`
 	fi
