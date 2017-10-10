@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/aarduain/.oh-my-zsh
+export ZSH=/home/aarduain/.oh-my-zsh
 
 fpath=(~/.oh-my-zsh $fpath)
 fpath=(~/.oh-my-zsh/completions $fpath)
@@ -11,7 +11,8 @@ fpath=(~/.oh-my-zsh/completions $fpath)
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="af-magic"
 DEFAULT_USER="aarduain"
 
 alias la='ls -la'
@@ -25,33 +26,30 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
-alias vim="/usr/local/bin/mvim -v"
-alias vi="/usr/local/bin/mvim -v"
 export SERVER='aarduain.com'
 export SERVERDIR='/web/aarduain.com'
 export SANDBOX=$SERVERDIR
 export DBSERVER='localhost'
-export EDITOR='vim'
 alias SB='source ~/.zshrc'
 alias lt='ls -altr'
 alias pj='phantomjs --webdriver=4444 --ignore-ssl-errors=true --ssl-protocol=any'
 alias selenium='java -jar /usr/local/lib/node_modules/selenium-server-standalone/index.jar'
 alias cd='cd -P'
 alias ag='ag --path-to-agignore ~/.agignore'
-set -o vi
+alias vi='vim'
+alias vim='/usr/bin/vim'
 
 # MacPorts Installer addition on 2015-05-04_at_15:34:11: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/opt/local/lib/percona/bin:$PATH"
 export PATH="/opt/local/lib/php/pear/bin:$PATH"
-export PATH="/Users/aarduain:$PATH"
-export PATH="/Users/aarduain/bin/scripts:$PATH"
-export PATH="/Users/aarduain/bin:$PATH"
-export PATH="/Users/aarduain/.vimpkg/bin:$PATH"
-export PATH="/Users/aarduain/Jmeter/bin:$PATH"
-export PATH="/Users/aarduain/bin/chromedriver:$PATH"
+export PATH="/home/aarduain:$PATH"
+export PATH="/home/aarduain/bin/scripts:$PATH"
+export PATH="/home/aarduain/bin:$PATH"
+export PATH="/home/aarduain/.vimpkg/bin:$PATH"
+export PATH="/home/aarduain/Jmeter/bin:$PATH"
+export PATH="/home/aarduain/bin/chromedriver:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
-
 #run bashrc on startup
 #if [ -a ~/.zshrc ]; then
 #source ~/.zshrc
@@ -63,7 +61,7 @@ keychain --nogui $HOME/.ssh/id_rsa
 function startSelenium() {
 	if [ -z $(pgrep -f selenium) ]; then
 		echo "Starting Selenium Standalone Server With ChromeDriver: "
-		nohup java -jar /usr/local/lib/node_modules/selenium-server-standalone/index.jar -Dwebdriver.chrome.driver=/Users/aarduain/bin/chromedriver >> /var/log/selenium-server.log &
+		nohup java -jar /usr/local/lib/node_modules/selenium-server-standalone/index.jar -Dwebdriver.chrome.driver=/home/aarduain/bin/chromedriver >> /var/log/selenium-server.log &
 	else
 		echo "Selenium Standalone Server already running: "`pgrep -f selenium`
 	fi
@@ -72,7 +70,7 @@ function startSelenium() {
 function startPhantomJs() {
 	if [ -z $(pgrep phantom) ]; then
 		echo "Starting PhantomJS: "
-		nohup phantomjs --webdriver=4444 --ignore-ssl-errors --ssl-protocol=any  > /Users/aarduain/phantomjs.log &
+		nohup phantomjs --webdriver=4444 --ignore-ssl-errors --ssl-protocol=any  > /home/aarduain/phantomjs.log &
 	else
 		echo "PhantomJS already running: "`pgrep phantomjs`
 	fi
@@ -107,7 +105,7 @@ pwd
 
 function tomcatControl() {
 	local tomcatVer="7.0.54"
-	local tomcatDir="/Users/aarduain/tomcat/apache-tomcat-$tomcatVer"
+	local tomcatDir="/home/aarduain/tomcat/apache-tomcat-$tomcatVer"
 	local currentDb=$(readlink $tomcatDir/conf/server.xml | cut -d'-' -f1)
 	local currentCon=$(readlink $tomcatDir/conf/context.xml)
 	local currentServ=$(readlink $tomcatDir/conf/server.xml)
@@ -241,13 +239,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

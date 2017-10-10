@@ -26,7 +26,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set confirm
-"set expandtab
+set expandtab
 set encoding=utf-8
 set scrolloff=3
 " set cursorline
